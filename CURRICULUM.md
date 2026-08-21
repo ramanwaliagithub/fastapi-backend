@@ -22,8 +22,8 @@ do is worth more than finishing on schedule.
 
 ## Progress tracker
 
-- [ ] Phase 0 — Orientation & Environment (Days 1–2)
-- [ ] Phase 1 — FastAPI & Python Web Fundamentals (Days 3–6)
+- [x] Phase 0 — Orientation & Environment (Days 1–2)
+- [ ] Phase 1 — FastAPI & Python Web Fundamentals (Days 3–6, Day 3 done)
 - [ ] Phase 2 — Database Foundations (Days 7–10)
 - [ ] Phase 3 — Authentication & Authorization (Days 11–14)
 - [ ] Phase 4 — Full CRUD + Business Logic (Days 15–19)

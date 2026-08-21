@@ -15,8 +15,8 @@ framework knowledge, start here:
    across 11 phases, from "what is an API" through deployment and CI/CD. Every concept is
    explained with *why*, not just *what to type*.
 
-Nothing in `app/` exists yet — this repo currently holds only its own teaching plan. Day 1's first
-commits (see CURRICULUM.md) create `pyproject.toml` and the first `app/main.py`.
+Progress so far: Days 1–3 of CURRICULUM.md are done — a running FastAPI app with routed, tagged
+example routes. Real domain code (the actual TaskFlow models) starts in Phase 2.
 
 ## What TaskFlow will end up doing
 
@@ -46,15 +46,23 @@ fastapi-backend/
 ├── SETUP.md              what to install, and when
 ├── PROJECT_DETAILS.md    what TaskFlow is: data model, API surface, architecture
 ├── CURRICULUM.md         the full day-by-day, commit-by-commit learning plan
-└── app/                  created starting Day 1 — doesn't exist yet
+├── .env.example          documents required env vars (populated starting Day 4)
+└── app/
+    ├── main.py            FastAPI() instance, router registration
+    └── routers/
+        └── items.py       throwaway demo router (Days 2–3) — removed once the real
+                            TaskFlow domain routers replace it in Phase 2+
 ```
+
+The full target layout (once the real domain exists) is in
+[PROJECT_DETAILS.md](PROJECT_DETAILS.md#repo-layout-target-shape--grows-incrementally-day-by-day).
 
 ## Progress
 
 Tracked in [CURRICULUM.md](CURRICULUM.md#progress-tracker) — check off each phase as you complete
 it.
 
-## Once the project exists (starting Day 1)
+## Running it
 
 ```
 uv sync
