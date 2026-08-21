@@ -73,3 +73,14 @@ parameter, query parameter, and Pydantic body model you write becomes part of th
 automatically. `/docs` (Swagger UI) and `/redoc` (ReDoc) are just two different renderers for
 that same schema; you never hand-write API documentation, you generate it by writing normally
 type-hinted Python.
+
+## Why routes live in routers, not all in `main.py`
+
+An `APIRouter` is a mini FastAPI app you attach to the real one with `app.include_router(...)` —
+it lets each resource (items today; users, projects, tasks later) own its own file instead of
+every route piling into one growing `main.py`. Two concrete payoffs: a router's logic can be
+tested in isolation without booting the whole app, and ten routes changing in ten different files
+means ten small diffs instead of one file everyone's editing at once. `prefix=` on the router
+factors the shared path segment (`/items`) out of every route inside it; `tags=` controls how
+`/docs` groups those routes in the UI — that's why the items routes now show under an "items"
+heading instead of "default."
