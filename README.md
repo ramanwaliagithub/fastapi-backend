@@ -92,3 +92,14 @@ means ten small diffs instead of one file everyone's editing at once. `prefix=` 
 factors the shared path segment (`/items`) out of every route inside it; `tags=` controls how
 `/docs` groups those routes in the UI — that's why the items routes now show under an "items"
 heading instead of "default."
+
+## Why config comes from the environment, not the code
+
+`app/config.py` reads settings through `pydantic_settings.BaseSettings` instead of the app
+hardcoding values like `"TaskFlow API"` directly. This is the [12-factor app](https://12factor.net/config)
+principle: the same code should run in dev, test, and production by changing only environment
+variables — never by editing source. Concretely here: `Settings` reads from a local `.env` file
+(gitignored — it holds *your* real values and is never committed), while `.env.example` stays
+committed and documents the *shape* of config every contributor needs, without leaking anything
+real. A field with no default (the database URL arrives on Day 7) makes the app refuse to start
+without it — failing loudly at startup beats failing silently three requests into runtime.
