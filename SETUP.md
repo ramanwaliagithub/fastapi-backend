@@ -43,6 +43,21 @@ Run the app:
 uv run fastapi dev app/main.py
 ```
 
+## Day 4 — configuration
+
+```
+uv add pydantic-settings
+```
+
+From this point on, copy `.env.example` to a real `.env` before running the app:
+```
+cp .env.example .env
+```
+`.env` is gitignored — it's where your actual local values live. `.env.example` stays committed
+and documents the *shape* of required config without leaking real secrets. As of Day 4, both
+fields (`APP_NAME`, `DEBUG`) have defaults, so the app still runs even without a `.env` file; that
+changes on Day 7, when a required database URL is added.
+
 ## Day 7 — Docker & Postgres
 
 | Tool | Why | Install |
