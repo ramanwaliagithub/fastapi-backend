@@ -58,6 +58,20 @@ and documents the *shape* of required config without leaking real secrets. As of
 fields (`APP_NAME`, `DEBUG`) have defaults, so the app still runs even without a `.env` file; that
 changes on Day 7, when a required database URL is added.
 
+## Day 5 — testing
+
+```
+uv add --dev pytest
+```
+
+`--dev` because tests never need to ship with the running app — this dependency exists for local
+development and CI only. `httpx` (needed by `fastapi.testclient.TestClient`) is already present,
+pulled in transitively by the `fastapi[standard]` extra from Day 1.
+
+```
+uv run pytest -v
+```
+
 ## Day 7 — Docker & Postgres
 
 | Tool | Why | Install |
