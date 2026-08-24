@@ -1,3 +1,10 @@
+"""
+Frozen snapshot of the "items" demo router built across Days 2-5 while learning path/query
+params, request bodies, response models, status codes, and HTTPException. Retired from the
+running app on Day 6 once those concepts were understood — kept here for reference only.
+Not imported by app/main.py; not maintained going forward.
+"""
+
 from fastapi import APIRouter
 from pydantic import BaseModel
 from fastapi import APIRouter, HTTPException, status
