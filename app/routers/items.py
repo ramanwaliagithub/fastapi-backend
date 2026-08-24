@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
-from fastapi import APIRouter, status
+from fastapi import APIRouter, HTTPException, status
 
 router = APIRouter(prefix="/items", tags=["items"])
 
@@ -16,10 +16,15 @@ class ItemOut(ItemCreate):
 _items: dict[int, ItemOut] = {}
 _next_id = 1
 
-    
-@router.get("/{item_id}")
+
+@router.get("/{item_id}", response_model=ItemOut)
 async def read_item(item_id: int):
-    return {"item_id": item_id}
+    item = _items.get(item_id)
+    if item is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND, detail=f"Item {item_id} not found"
+        )
+    return item
 
 
 @router.get("")
