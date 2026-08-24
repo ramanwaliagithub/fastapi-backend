@@ -15,6 +15,14 @@
   whole.
 - [SETUP.md](SETUP.md) tells you exactly what to install and *when* — you never need to install
   something before the day that first needs it.
+- When a day retires earlier learning code (e.g. Day 6 retiring the Days 2–5 `items` demo),
+  it gets archived rather than deleted: moved into a root-level `examples/` folder, renamed with a
+  `dayNN_MM_<topic>` prefix, and given a short docstring explaining what it demonstrated and why
+  it was retired. `examples/` sits outside `app/` (never imported by the real app) and outside
+  `tests/` (never collected by pytest — see `testpaths` in `pyproject.toml`), so old code stays
+  readable without cluttering or affecting the current app. Git history already preserves every
+  exact past state too (`git show <commit>:path`) — `examples/` is for quick browsing without
+  digging through `git log`, not a replacement for it.
 
 **Pace**: 32 teaching days across 11 phases, roughly 6+ weeks at 5 days/week. Nothing here is
 timed — go slower if a concept needs it. Understanding *why* SQLAlchemy sessions work the way they
@@ -23,7 +31,7 @@ do is worth more than finishing on schedule.
 ## Progress tracker
 
 - [x] Phase 0 — Orientation & Environment (Days 1–2)
-- [ ] Phase 1 — FastAPI & Python Web Fundamentals (Days 3–6, Day 3 done)
+- [x] Phase 1 — FastAPI & Python Web Fundamentals (Days 3–6)
 - [ ] Phase 2 — Database Foundations (Days 7–10)
 - [ ] Phase 3 — Authentication & Authorization (Days 11–14)
 - [ ] Phase 4 — Full CRUD + Business Logic (Days 15–19)
